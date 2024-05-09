@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full h-full bg-zinc-900 p-10 text-white">
+         <div class="nav mb-10">
+            <a href="/" class="text-blue-500">Back to Home</a>
+        </div>
+                <h1 class="px-5 py-2 flex justify-center font-bold text-white text-3xl tracking-tighter mb-3">All Cards</h1>
+            <div class="cards flex gap-3 flex-wrap">
+                <% if(cards.length > 0) { %>
+                    <% cards.forEach(function(user){ %>
+                      <div class="cards w-72 p-4 bg-zinc-800 rounded-lg">
+                    <div class="w-full h-52 rounded-lg bg-zinc-500">
+                        <img src="<%= user.image %>" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                    <h3 class="text-xl mt-3 tracking-tighter"><%= user.name %></h3>
+                    <h5 class="text-zinc-500"><%= user.email %></h5>
+                    <div class="flex gap-3 pt-10">
+                        <a class="text-zinc-200" href="/edit/<%= user._id %>">Edit</a>
+                        <a class="text-red-200" href="/delete/<%= user._id %>">Delete</a>
+                    </div>
+               </div>
+                <% }) %>
+                <% } %>
+            </div>
+    </div>
+</body>
+</html>
+
